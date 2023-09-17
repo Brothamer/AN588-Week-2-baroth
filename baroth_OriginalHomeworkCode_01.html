@@ -213,6 +213,8 @@ Coerce the third column to be factor valued</a></li>
 5: Check the data type for each variable in the data frame</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#four-challenges-during-this-assignment" id="toc-four-challenges-during-this-assignment">Four Challenges During
+This Assignment</a></li>
 </ul>
 </div>
 </div>
@@ -775,8 +777,36 @@ data frame are the object type that they are supposed to be.</p>
 ##  $ V1: num  3 23 33 42 41
 ##  $ V2: logi  FALSE TRUE TRUE FALSE FALSE
 ##  $ V3: Factor w/ 2 levels &quot;1&quot;,&quot;2&quot;: 1 2 1 1 2</code></pre>
+<hr />
 </div>
 </div>
+</div>
+<div id="four-challenges-during-this-assignment" class="section level1">
+<h1>Four Challenges During This Assignment</h1>
+<ol style="list-style-type: decimal">
+<li>In challenge 1, I initially used str_split() which gave a list from
+which I couldn’t figure out how to efficiently extract every third
+element. By using ?str_split, I found that str_split_1() would take a
+string and return a character vector on which I could the use
+seq().</li>
+<li>In challenge 5, I wasn’t sure at first if I was actually
+successfully applying as.logical() and and as.factor() to the columns
+because I wasn’t sure how to save those changed into the original data
+frame. Eventually I settled on including the indexing brackets both in
+the as.logical() argument and in the name of the object: <em>df3[,2]
+&lt;- as.logical(df3[,2])</em>. I’m not sure if both parts are
+necessary, but it did work.</li>
+<li>In my initial attempts to knit the document, I had to fix a bunch of
+errors. Most of them were just chunks with the same name. One of them
+was saying that the str_Split_1() function wasn’t found. Jess helped me
+by telling me that I needed to load the stringr package within the
+markdown file.</li>
+<li>I had included the #, ##, ### section-header organizing system from
+the beginning, but when I finally knitted, they just appeared in the
+html text as #. By paying closer attention, I saw that I should have had
+a space after each # before starting the text of the section
+header.</li>
+</ol>
 </div>
 </section>
 

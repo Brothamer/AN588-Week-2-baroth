@@ -219,3 +219,11 @@ Use str() to report details about a structure. In this case, the structure is th
 ```{r Challenge 5 step 5}
 str(df3) #gives details about dataframe to check data type for each variable
 ```
+
+***
+# Four Challenges During This Assignment
+
+1. In challenge 1, I initially used str_split() which gave a list from which I couldn't figure out how to efficiently extract every third element. By using ?str_split, I found that str_split_1() would take a string and return a character vector on which I could the use seq().
+2. In challenge 5, I wasn't sure at first if I was actually successfully applying as.logical() and and as.factor() to the columns because I wasn't sure how to save those changed into the original data frame. Eventually I settled on including the indexing brackets both in the as.logical() argument and in the name of the object: *df3[,2] <- as.logical(df3[,2])*. I'm not sure if both parts are necessary, but it did work.
+3. In my initial attempts to knit the document, I had to fix a bunch of errors. Most of them were just chunks with the same name. One of them was saying that the str_Split_1() function wasn't found. Jess helped me by telling me that I needed to load the stringr package within the markdown file.
+4. I had included the #, ##, ### section-header organizing system from the beginning, but when I finally knitted, they just appeared in the html text as #. By paying closer attention, I saw that I should have had a space after each # before starting the text of the section header.
