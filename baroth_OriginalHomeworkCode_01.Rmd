@@ -10,11 +10,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Module 04
-
+***
 ## Challenge 1
 ### Directions
-First, create a vector of 1, word character strings comprising the first line of the novel Ulysses, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
-Then, extract every third element of this vector.
+* First, create a vector of 1, word character strings comprising the first line of the novel Ulysses, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
+* Then, extract every third element of this vector.
 
 ### Step 1: Create a string of the first sentence of *Ulysses* by James Joyce.
 First, save the sentence as a string: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
@@ -43,12 +43,12 @@ Use seq() to extract specific elements of the vector. Use the by=3 argument to i
 every3 <- Ulysses_split[seq(from = 3, to = 21, by = 3)] #extract every third element
 every3 #check that it worked
 ```
-
+***
 ## Challenge 2
 ### Directions
-Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x.
-Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x.
-Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
+* Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x.
+* Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x.
+* Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
 
 ### Step 1: Create the matrix
 Specify the data, the rows and columns. You can specify byrow=FALSE, but that is the default, so it's not necessary.
@@ -75,15 +75,14 @@ To extract a specific elements, use bracket notation, m[2,2]. To assign multiple
 x <- c(m[2,2], m[6,9]) #extract and assign the elements to the variable x
 x #check that you extracted the correct elements
 ```
-
+***
 ## Challenge 3
 ### Directions
-Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)
-
-Given this matrix, what would the following return?
-a[1, 1, 1, 2]
-a[2, 3, 2, ]
-a[1:5, 1:5, 3, 3]
+* Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)
+* Given this matrix, what would the following return?
+  + a[1, 1, 1, 2]
+  + a[2, 3, 2, ]
+  + a[1:5, 1:5, 3, 3]
 
 ### Step 1: Construct the array.
 Use array() to construct an array. Use 400:1 to fill in the data, making sure that it descends from 400 to 1. Specify the dimensions, be sure to use c(). When R reports the array, it shows you matrices of dimensions one and two for all the combinations of the third and fourth dimensions.
@@ -101,17 +100,36 @@ a[1:5,1:5,3,3] #a matrix but limited only to values 1:5 in the first and second 
 ```
 The point has a value of 300.
 The vector contains the values 364 264 164 and 64. You can see that the same position varied only by the fourth dimension counts by 100.
-The matrix gives contains the values
-     [,1] [,2] [,3] [,4] [,5]
-[1,]  150  145  140  135  130
-[2,]  149  144  139  134  129
-[3,]  148  143  138  133  128
-[4,]  147  142  137  132  127
-[5,]  146  141  136  131  126
+The matrix contains the values as seen above.
 
+***
 ## Challenge 4
 ### Directions
-Make a nested list of a simplified primate taxonomy
+Make a nested list of a simplified primate taxonomy:
+
+* Primates
+  + Haplorhini
+    * Anthropoidea
+      + Platyrrhini
+        * Cebidae
+        * Atelidae
+        * Pitheciidae
+      + Catarrhini
+        * Cercopithecidae
+        * Hylobatidae
+        * Hominidae
+    * Tarsioidea
+      + Tarsiidae
+  + Strepsirhini
+    * Lorisoidea
+      + Lorisidae
+      + Galagidae
+    * Lemuroidea
+      + Cheirogaleidae
+      + Lepilemuridae
+      + Indriidae
+      + Lemuridae
+      + Daubentoniidae
 
 ### Step 1: Make a character object of the groups at the lowest level of list organization.
 Within the strepsirhines, this means making objects of the lemuroidea and the lorisoidea. Use concatonate, c(), to combine the elements of the object. Since these are characters, make sure to put them in "quotations." The words lemuroidea and lorisoidea do not need to be in quotations because they are becoming the names of the objects.
@@ -135,7 +153,7 @@ Strepsirhini #call up the list to see that it is organized correctly
 Note that in this simplified taxonomy, the anthropoids have an additional level of organization. Therefore, create the catarrhines by repeating steps 1 and 2; create the tarsids using steps 1 and 2; then combine the catarhines and tarids into the haplorhines by repeating step 2 again. Make sure to keep naming the list elements.
 ``` {r Challenge 4 step 3}
 Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae") #create the catarrhines character object 
-Platyrrhini <- c("Cebidae", "Atelidae", "pitheciidiae") #create the platyrrhines character object
+Platyrrhini <- c("Cebidae", "Atelidae", "Pitheciidiae") #create the platyrrhines character object
 Anthropoidea <- list(Catarrhini, Platyrrhini) #use the list function to combine catarrhines and platyrrhines into a list
 names(Anthropoidea) <- list("Catarrhini", "Platyrrhini") #name the objects in the list
 Anthropoidea #check that the objects are organized correctly in the list
@@ -157,20 +175,15 @@ Primates <- list(Haplorhini, Strepsirhini) #combine the lists into the final lis
 names(Primates) <- list("Haplorhini", "Strepsirhini") #name the list objects
 Primates #check the names and organization
 ```
-
+***
 ## Challenge 5
 ### Directions
-Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix row-wise.
-
-Then, do the following:
-
-Coerce the matrix to a data frame.
-
-As a data frame, coerce the second column to be logical-valued
-
-As a data frame, coerce the third column to be factor-valued
-
-When you are done, use the str() command to show the data type for each variable in your dataframe.
+* Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix row-wise.
+* Then, do the following:
+  + Coerce the matrix to a data frame.
+  + As a data frame, coerce the second column to be logical-valued
+  + As a data frame, coerce the third column to be factor-valued
+* When you are done, use the str() command to show the data type for each variable in your dataframe.
 
 ### Step 1: Store the matrix
 Use the matrix() function to make a matrix. Use concatonate, the c() function, to group the list of numbers as the data set that will fill the matrix. Specify the number of rows and columns. Specify that byrow=TRUE because the default is to fill by column.

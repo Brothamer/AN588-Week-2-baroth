@@ -359,15 +359,18 @@ display: none;
 
 <div id="module-04" class="section level1">
 <h1>Module 04</h1>
+<hr />
 <div id="challenge-1" class="section level2">
 <h2>Challenge 1</h2>
 <div id="directions" class="section level3">
 <h3>Directions</h3>
-<p>First, create a vector of 1, word character strings comprising the
+<ul>
+<li>First, create a vector of 1, word character strings comprising the
 first line of the novel Ulysses, by James Joyce: “Stately, plump Buck
 Mulligan came from the stairhead, bearing a bowl of lather on which a
-mirror and a razor lay crossed.” Then, extract every third element of
-this vector.</p>
+mirror and a razor lay crossed.”</li>
+<li>Then, extract every third element of this vector.</li>
+</ul>
 </div>
 <div id="step-1-create-a-string-of-the-first-sentence-of-ulysses-by-james-joyce." class="section level3">
 <h3>Step 1: Create a string of the first sentence of <em>Ulysses</em> by
@@ -413,17 +416,21 @@ start with the third element.</p>
 <pre class="r"><code>every3 &lt;- Ulysses_split[seq(from = 3, to = 21, by = 3)] #extract every third element
 every3 #check that it worked</code></pre>
 <pre><code>## [1] &quot;Buck&quot;    &quot;from&quot;    &quot;bearing&quot; &quot;of&quot;      &quot;which&quot;   &quot;and&quot;     &quot;lay&quot;</code></pre>
+<hr />
 </div>
 </div>
 <div id="challenge-2" class="section level2">
 <h2>Challenge 2</h2>
 <div id="directions-1" class="section level3">
 <h3>Directions</h3>
-<p>Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and
-assign them to the variable x. Given the matrix, m, above, extract the
-6th to 8th row and assign them to the variable x. Given the matrix, m,
-above, extract the elements from row 2, column 2 to row 6, column 9 and
-assign them to the variable x.</p>
+<ul>
+<li>Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns
+and assign them to the variable x.</li>
+<li>Given the matrix, m, above, extract the 6th to 8th row and assign
+them to the variable x.</li>
+<li>Given the matrix, m, above, extract the elements from row 2, column
+2 to row 6, column 9 and assign them to the variable x.</li>
+</ul>
 </div>
 <div id="step-1-create-the-matrix" class="section level3">
 <h3>Step 1: Create the matrix</h3>
@@ -482,16 +489,23 @@ combined.</p>
 <pre class="r"><code>x &lt;- c(m[2,2], m[6,9]) #extract and assign the elements to the variable x
 x #check that you extracted the correct elements</code></pre>
 <pre><code>## [1] 10 70</code></pre>
+<hr />
 </div>
 </div>
 <div id="challenge-3" class="section level2">
 <h2>Challenge 3</h2>
 <div id="directions-2" class="section level3">
 <h3>Directions</h3>
-<p>Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a
-consisting of the numbers 400 to 1 (i.e., a descending series)</p>
-<p>Given this matrix, what would the following return? a[1, 1, 1, 2]
-a[2, 3, 2, ] a[1:5, 1:5, 3, 3]</p>
+<ul>
+<li>Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a
+consisting of the numbers 400 to 1 (i.e., a descending series)</li>
+<li>Given this matrix, what would the following return?
+<ul>
+<li>a[1, 1, 1, 2]</li>
+<li>a[2, 3, 2, ]</li>
+<li>a[1:5, 1:5, 3, 3]</li>
+</ul></li>
+</ul>
 </div>
 <div id="step-1-construct-the-array." class="section level3">
 <h3>Step 1: Construct the array.</h3>
@@ -666,17 +680,59 @@ just one section using the : function to give a range of values.</p>
 ## [5,]  146  141  136  131  126</code></pre>
 <p>The point has a value of 300. The vector contains the values 364 264
 164 and 64. You can see that the same position varied only by the fourth
-dimension counts by 100. The matrix gives contains the values [,1] [,2]
-[,3] [,4] [,5] [1,] 150 145 140 135 130 [2,] 149 144 139 134 129 [3,]
-148 143 138 133 128 [4,] 147 142 137 132 127 [5,] 146 141 136 131
-126</p>
+dimension counts by 100. The matrix contains the values as seen
+above.</p>
+<hr />
 </div>
 </div>
 <div id="challenge-4" class="section level2">
 <h2>Challenge 4</h2>
 <div id="directions-3" class="section level3">
 <h3>Directions</h3>
-<p>Make a nested list of a simplified primate taxonomy</p>
+<p>Make a nested list of a simplified primate taxonomy:</p>
+<ul>
+<li>Primates
+<ul>
+<li>Haplorhini
+<ul>
+<li>Anthropoidea
+<ul>
+<li>Platyrrhini
+<ul>
+<li>Cebidae</li>
+<li>Atelidae</li>
+<li>Pitheciidae</li>
+</ul></li>
+<li>Catarrhini
+<ul>
+<li>Cercopithecidae</li>
+<li>Hylobatidae</li>
+<li>Hominidae</li>
+</ul></li>
+</ul></li>
+<li>Tarsioidea
+<ul>
+<li>Tarsiidae</li>
+</ul></li>
+</ul></li>
+<li>Strepsirhini
+<ul>
+<li>Lorisoidea
+<ul>
+<li>Lorisidae</li>
+<li>Galagidae</li>
+</ul></li>
+<li>Lemuroidea
+<ul>
+<li>Cheirogaleidae</li>
+<li>Lepilemuridae</li>
+<li>Indriidae</li>
+<li>Lemuridae</li>
+<li>Daubentoniidae</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 </div>
 <div id="step-1-make-a-character-object-of-the-groups-at-the-lowest-level-of-list-organization." class="section level3">
 <h3>Step 1: Make a character object of the groups at the lowest level of
@@ -719,7 +775,7 @@ repeating steps 1 and 2; create the tarsids using steps 1 and 2; then
 combine the catarhines and tarids into the haplorhines by repeating step
 2 again. Make sure to keep naming the list elements.</p>
 <pre class="r"><code>Catarrhini &lt;- c(&quot;Cercopithecidae&quot;, &quot;Hylobatidae&quot;, &quot;Hominidae&quot;) #create the catarrhines character object 
-Platyrrhini &lt;- c(&quot;Cebidae&quot;, &quot;Atelidae&quot;, &quot;pitheciidiae&quot;) #create the platyrrhines character object
+Platyrrhini &lt;- c(&quot;Cebidae&quot;, &quot;Atelidae&quot;, &quot;Pitheciidiae&quot;) #create the platyrrhines character object
 Anthropoidea &lt;- list(Catarrhini, Platyrrhini) #use the list function to combine catarrhines and platyrrhines into a list
 names(Anthropoidea) &lt;- list(&quot;Catarrhini&quot;, &quot;Platyrrhini&quot;) #name the objects in the list
 Anthropoidea #check that the objects are organized correctly in the list</code></pre>
@@ -727,7 +783,7 @@ Anthropoidea #check that the objects are organized correctly in the list</code><
 ## [1] &quot;Cercopithecidae&quot; &quot;Hylobatidae&quot;     &quot;Hominidae&quot;      
 ## 
 ## $Platyrrhini
-## [1] &quot;Cebidae&quot;      &quot;Atelidae&quot;     &quot;pitheciidiae&quot;</code></pre>
+## [1] &quot;Cebidae&quot;      &quot;Atelidae&quot;     &quot;Pitheciidiae&quot;</code></pre>
 <pre class="r"><code>Tarsiidae &lt;- &quot;Tarsiidae&quot; #create the tarsids character
 Tarsioidea &lt;- list(Tarsiidae) #make the tarsids character a list object (I&#39;m not sure if this step is necessary)
 names(Tarsioidea) &lt;- list(&quot;Tarsiidae&quot;) #name the list object
@@ -742,7 +798,7 @@ Haplorhini #check that the list is organized correctly</code></pre>
 ## [1] &quot;Cercopithecidae&quot; &quot;Hylobatidae&quot;     &quot;Hominidae&quot;      
 ## 
 ## $Anthropoidea$Platyrrhini
-## [1] &quot;Cebidae&quot;      &quot;Atelidae&quot;     &quot;pitheciidiae&quot;
+## [1] &quot;Cebidae&quot;      &quot;Atelidae&quot;     &quot;Pitheciidiae&quot;
 ## 
 ## 
 ## $Tarsioidea
@@ -764,7 +820,7 @@ Primates #check the names and organization</code></pre>
 ## [1] &quot;Cercopithecidae&quot; &quot;Hylobatidae&quot;     &quot;Hominidae&quot;      
 ## 
 ## $Haplorhini$Anthropoidea$Platyrrhini
-## [1] &quot;Cebidae&quot;      &quot;Atelidae&quot;     &quot;pitheciidiae&quot;
+## [1] &quot;Cebidae&quot;      &quot;Atelidae&quot;     &quot;Pitheciidiae&quot;
 ## 
 ## 
 ## $Haplorhini$Tarsioidea
@@ -780,21 +836,26 @@ Primates #check the names and organization</code></pre>
 ## 
 ## $Strepsirhini$Lorisoidea
 ## [1] &quot;Lorisidae&quot; &quot;Galagidae&quot;</code></pre>
+<hr />
 </div>
 </div>
 <div id="challenge-5" class="section level2">
 <h2>Challenge 5</h2>
 <div id="directions-4" class="section level3">
 <h3>Directions</h3>
-<p>Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1
+<ul>
+<li>Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1
 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix
-row-wise.</p>
-<p>Then, do the following:</p>
-<p>Coerce the matrix to a data frame.</p>
-<p>As a data frame, coerce the second column to be logical-valued</p>
-<p>As a data frame, coerce the third column to be factor-valued</p>
-<p>When you are done, use the str() command to show the data type for
-each variable in your dataframe.</p>
+row-wise.</li>
+<li>Then, do the following:
+<ul>
+<li>Coerce the matrix to a data frame.</li>
+<li>As a data frame, coerce the second column to be logical-valued</li>
+<li>As a data frame, coerce the third column to be factor-valued</li>
+</ul></li>
+<li>When you are done, use the str() command to show the data type for
+each variable in your dataframe.</li>
+</ul>
 </div>
 <div id="step-1-store-the-matrix" class="section level3">
 <h3>Step 1: Store the matrix</h3>
