@@ -5,81 +5,43 @@ date: "2023-09-17"
 output: html_document
 ---
 
----
-title: "AN588-Week-2"
-author: "Brooke Rothamer"
-date: "2023-09-14"
-output: html_document
----
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 #Module 04
 
-##Matrices
-Matrices are collections of vectors
-```{r MAtrices by column}
-m <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2) #Creating a matrix that fills column-wise
-m
-```
-```{r MAtrices by  row}
-n <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = TRUE) #Creating a matrix that fills row-wise
-n
-```
-```{r MAtrices by binding vectors}
-v1 <- c(1, 2, 3, 4)
-v2 <- c(6, 7, 8, 9)
-m1 <- rbind(v1, v2) #builds row-wise
-m1
-
-m2 <- cbind(v1, v2) #builds column-wise
-m2
-```
-
-###Metadata about a matrix
-
-```{r MAtrices metadata}
-class(m1) #object class
-dim(m1) #matrix dimensions
-colnames(m1) #report column names (not defined for this matrix: NULL)
-rownames(m1) #report row names
-(str(m1)) #provides details about any data structure
-```
-##Arrays
-Vectors and matrices are both types of arrays. They can have any number of dimensions but all the elements must be the same class.
-```{r Arrays}
-a <- array(data = 1:90, dim = c(5, 6, 3)) #creating a 3 dimensional array that is 5x6x3
-a
-```
-##Subsetting / Indexing
-Selecting elements from vectors, matrices, and arrays using their index positions in bracket notation
-```{r Arrays indexing}
-v <- 1:100  #This creates a vector containing all integers from 1 to 100 to use as an example
-v
-
-v[1:15] #select the first 15 elements
-
-v[c(2, 4, 6, 8, 10)] #select a vector of specific elements
-
-v[seq(from = 1, to = 15, by = 2)] #using a function/calculation to subset a vector
-```
 ##Challenge 1
+###Directions
+First, create a vector of 1, word character strings comprising the first line of the novel Ulysses, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
+Then, extract every third element of this vector.
 
-Creating a vector of the first sentence of *Ulysses* by James Joyce and removing punctuation.
-```{r Challenge 1 vector}
-library(stringr) #load in files in markdown file
+Step 1: Creating a string of the first sentence of *Ulysses* by James Joyce.
+First, save the sentence as a string: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
+```{r Challenge 1 step 1}
 Ulysses <- c("Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.") #creating the string
-Ulysses
-Ulysses_unpunct <- gsub("[[:punct:]]","",Ulysses) #removing punctuation
-Ulysses_unpunct
-Ulysses_split <- str_split_1(Ulysses_unpunct, " ") #dividing the string into a vector of substrings. There is a space between the " " to indicate that it should split every time there is a apace. I used str_split_1 instead of str_split because str_split_1 returns a character vector which works in seq().
-Ulysses_split
+Ulysses #check the string
 ```
-Extracting every third element of the vector using seq()
-```{r Challenge 1 subset}
-every3 <- Ulysses_split[seq(from = 3, to = 21, by = 3)]
-every3
+
+Step 2: Remove the punctuation.
+Use gsub("[[:punct:]]}",",*name of the string*) to search for punctuation/special charafcters and remove it from the string.
+```{r Challenge 1 step 2} 
+Ulysses_unpunct <- gsub("[[:punct:]]","",Ulysses) #removing punctuation
+Ulysses_unpunct #check the new unpunctuated version
+```
+
+###Step 3: Split the string into a vector of separate strings.
+First load in the package stringr. Install it first if needed. Then use str_split_1() to divide the string. The second argument " " has a space between the quotation marks to indicate that the string should be divided everywhere there is a space. You could tell it to divde using other markers if wanted. The benefit of str_split_1() as opposed to str_split is that it produces a character vector and not a list which makes the next step easier.
+```{r Challenge 1 step 3}
+library(stringr) #load stringr in the library
+Ulysses_split <- str_split_1(Ulysses_unpunct, " ") #dividing the string into a vector of substrings everywhere there is a space
+Ulysses_split #check the divided vector
+```
+###Step 4: Extracting every third element of the vector.
+Use seq() to extract specific elements of the vector. Use the by-3 argument to indicate every third element. Use the from=3 argument to start with the third element.
+```{r Challenge 1 step 4}
+every3 <- Ulysses_split[seq(from = 3, to = 21, by = 3)] #extract every third element
+every3 #check that it worked
 ```
 
 ##Challenge 2
