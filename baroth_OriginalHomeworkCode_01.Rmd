@@ -171,100 +171,52 @@ Now, you can use the name of an item in the list to refer to it:
 l$string  
 l$matrix[3, 5]  
 ```
+
 ##Challenge 4
+###Directions
 Make a nested list of a simplified primate taxonomy
-```{r Challenge 4}
+
+###Step 1: Make a character object of the groups at the lowest level of list organization.
+Within the streppsirhines, this means making objects of the lemuroidea and the lorisoidea. Use concatonate, c(), to combine the elements of the object. Since these are characters, make sure to put them in "quotations." The words lemuroidea and lorisoidea do not need to be in quotations because they are becoming the names of the objects.
+```{r Challenge 4 step 1}
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
     "Daubentoniidae")
 Lorisoidea <- c("Lorisidae", "Galagidae")
-Strepsirhini <- list(Lemuroidea, Lorisoidea)
-names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
-Strepsirhini
-
-Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae")
-Platyrrhini <- c("Cebidae", "Atelidae", "pitheciidiae")
-Anthropoidea <- list(Catarrhini, Platyrrhini)
-names(Anthropoidea) <- list("Catarrhini", "Platyrrhini")
-Anthropoidea
-
-Tarsiidae <- "Tarsiidae"
-Tarsioidea <- list(Tarsiidae)
-names(Tarsioidea) <- list("Tarsiidae")
-Tarsioidea
-
-Haplorhini <- list(Anthropoidea, Tarsioidea)
-names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
-Haplorhini
-
-Primates <- list(Haplorhini, Strepsirhini)
-names(Primates) <- list("Haplorhini", "Strepsirhini")
-Primates
+str(Lemuroidea) #This is just to check that the object was made correctly
+str(Lorisoidea) #This is just to check that the object was made correctly
 ```
+### Step 2: Combine those characters into a list named for the next level up in the hierarchy.
+At this stage use list() instead of c() because the objects you are combining are already objects. You also have to name the items in the list so that they aren't just named [[1]] and [[2]]. Make sure to name them in the order you added them to the list and use "quotations".
+```{r Challenge 4 step 2}
+Strepsirhini <- list(Lemuroidea, Lorisoidea) #Combine the elements into a list
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea") #Name the elements in the list in order and using quotations
+Strepsirhini #call up the list to see that it is organized correctly
+```
+###Step 3: Repeat these steps for the haplorhines.
+Note that in this simplified taxonomy, the anthropoids have an additional level of organization. Therefore, create the catarrhines by repeating steps 1 and 2; create the tarsids using steps 1 and 2; then combine the catarhines and tarids into the haplorhines by repeating step 2 again. Make sure to keep naming the list elements.
+``` {r Challenge 4 step 3}
+Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae") #create the catarrhines character object 
+Platyrrhini <- c("Cebidae", "Atelidae", "pitheciidiae") #create the platyrrhines character object
+Anthropoidea <- list(Catarrhini, Platyrrhini) #use the list function to combine catarrhines and platyrrhines into a list
+names(Anthropoidea) <- list("Catarrhini", "Platyrrhini") #name the objects in the list
+Anthropoidea #check that the objects are organized correctly in the list
 
-##Data Frames
-The data.frame() command can be used to create dataframes from scratch.
-```{r Data frame from scratch}
-df <- data.frame(firstName = c("Nitin", "Silvy", "Ingrid", "Claire"), major = c("Biology (CM)",
-    "Anthropology (Bio)", "Anthropology (Medical)", "Biology (EEB)"), sex = c("M",
-    "F", "F", "F"), yearInProgram = c(1, 2, 2, 3))
-df
-```
-Rather than creating one from scratch, we more commonly read tabular data into R from a pre-existing data file (i.e., a spreadsheet), which typically results in the table being represented as a dataframe. 
-```{r data frame from file}
-df <- read.csv("C:/Users/brook/OneDrive/Documents/2023_Fall/AN588-Week-2/random-people", sep = ",", header = TRUE, stringsAsFactors = FALSE)
-# only print select columns
-df[, c(1, 3, 4, 11, 12)]
-```
-```{r data frame details}
-str(df)
-```
-You can use bracket notation to index data frames as with other structures.
-```{r data frame indexing}
-df[,3]
-str(df[,3])
-df$name.last
-str(df$name.last)
-df[3]
-str(df[3])
-df["name.last"]
-str(df["name.last"])
-```
-You can add rows (additional cases) or columns (additional variables) to a data frame using rbind() and cbind().
-```{r data frame adding and binding}
-df <- cbind(df, id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-    17, 18, 19, 20))
-df <- cbind(df, school = c("BU", "BU", "Harvard", "Harvard", "BU", "Boston College",
-    "MIT", "BU", "BU", "UMASS Boston", "Harvard", "BU", "Boston College", "BU",
-    "Harvard", "MIT", "Harvard", "BU", "UMASS Boston", "Harvard"))
-df
-```
-cbind() caused **school** to be added as a *factor*
-Using the $ operator will add **school** as a *character* vector.
-```{r data frame adding using $ operator}
-df$school <- c("BU", "BU", "Harvard", "Harvard", "BU", "Boston College", "MIT",
-    "BU", "BU", "UMASS Boston", "Harvard", "BU", "Boston College", "BU", "Harvard",
-    "MIT", "Harvard", "BU", "UMASS Boston", "Harvard")
-```
+Tarsiidae <- "Tarsiidae" #create the tarsids character
+Tarsioidea <- list(Tarsiidae) #make the tarsids character a list object (I'm not sure if this step is necessary)
+names(Tarsioidea) <- list("Tarsiidae") #name the list object
+Tarsioidea #check that the object is organized correctly in the list
 
-##Filtering
-Logical vectors may also be used to subset data frames.
-```{r data frame filtering rows}
-new_df <- df[df$school == "BU", ]
-new_df #This new data frame only has the vectors for which BU in the School factor is TRUE.
+Haplorhini <- list(Anthropoidea, Tarsioidea) #combines the anthropoid and tarsid lists into a haplorhine list
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea") #name the objects in the list
+Haplorhini #check that the list is organized correctly
 ```
-```{r data frame filtering some columns}
-new_df <- df[df$school == "BU", c("name.last", "name.first", "school")]
-new_df #This new data frame only has the vectors for which BU in the School factor is TRUE and it only includes some columns
+###Step 4: Combine the lists into the final Primates list.
+Repeating step 2 one last time, use list() to combine the Haplorhines and Strepsirhines, making sure to name the objects. Finally check that everything is in the correct order and the names match the groups that they are supposed to be naming.
+```{r Challenge 4 step 4}
+Primates <- list(Haplorhini, Strepsirhini) #combine the lists into the final list
+names(Primates) <- list("Haplorhini", "Strepsirhini") #name the list objects
+Primates #check the names and organization
 ```
-
-##Factors, Conversion and Coercion, and Special Data Values
-You can convert factor to character data (and vice versa) using the as.character() or as.factor() commands. You can also convert/coerce any vector to a different class using similar constructs (e.g., as.numeric()), although not all such conversions are really meaningful. Converting factor data to numeric results in the the converted data having the value of R’s internal numeric code for the factor level, while converting character data to numeric results in the data being coerced into the special data value of NA (see below) for missing data.
-
-Finally, R has three special data values that it uses in a variety of situations.
-
-NA (for not available) is used for missing data. Many statistical functions offer the possibility to include as an argument na.rm=TRUE (“remove NAs”) so that NAs are excluded from a calculation.
-Inf (and -Inf) is used when the result of a numerical calculation is too extreme for R to express
-NaN (for not a number) is used when R cannot express the results of a calculation , e.g., when you try to take the square root of a negative number.
 
 ##Challenge 5
 ###Directions
