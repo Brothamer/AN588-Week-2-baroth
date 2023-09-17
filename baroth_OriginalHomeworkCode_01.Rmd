@@ -105,79 +105,42 @@ z
 
 ##Challenge 3
 Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)
-```{r Challenge 3 4D array}
-a <- array(data = 1:400, dim = c(5, 5, 4, 4))
-a
-```
+
 Given this matrix, what would the following return?
-
 a[1, 1, 1, 2]
-
 a[2, 3, 2, ]
-
 a[1:5, 1:5, 3, 3]
+
+###Step 1: Construct the array.
+Use array() to construct an array. Use 400:1 to fill in the data, making sure that it descends from 400 to 1. Specify the dimensions, be sure to use c(). When R reports the array, it shows you matrices of dimensions one and two for all the combinations of the third and fourth dimensions.
+```{r Challenge 3 step 1}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4)) #create the array
+a #check that the array is correct
+```
+
+###Step 2: What do these commands return from the array?
+From the array, you can call up one specific point of data by specifying all four dimensions. You can call up a vector by specifying three of the four dimensions. You can call up a matrix by specifying two of the four dimensions. You can also limit the vector or the matrix to just one section using the : function to give a range of values.
 ```{r Challenge 3 return values}
 a[1,1,1,2] #a single point
-a[2,3,2,] #a vector
-a[1:5,1:5,3,3] #a matrix
+a[2,3,2,] #a vector of values that vary in the fourth dimension
+a[1:5,1:5,3,3] #a matrix but limited only to values 1:5 in the first and second dimensions
 ```
-##Overwriting
-You can replace elements in a vector or matrix, or even entire rows or columns, by identifying the elements to be replaced and then assigning them new values
-
-Starting with the matrix, mat, defined above, what will be the effects of operations below? 
-
-```{r Overwriting a matrix}
-mat[7, 1] <- 564 #replaces one point
-mat[, 8] <- 2 #replaces a collumn
-mat[2:5, 4:8] <- 1 #replaces a 4x5 area
-mat[2:5, 4:8] <- c(20, 19, 18, 17) #replaces a 4x5 area with specific repeating values column-wise
-mat[2:5, 4:8] <- matrix(data = c(20:1), nrow = 4, ncol = 5, byrow = TRUE) #replaces a 4x5 area with specific descending values row-wise
-mat[, 8] <- c("a", "b") #replaces column 8 with characters "a" and "b" alternating; turns the numeric matrix into a character matric
-
-mat
-```
-##Lists
-Lists and data frames can be used together to group mixed structures and objects.
-Lists are created using list()
-```{r Lists}
-s <- c("this", "is", "a", "vector", "of", "strings")  # here we have a vector
-m <- matrix(data = 1:40, nrow = 5, ncol = 8)  # this is a matrix
-b <- FALSE  #and this is a logical statement
-l <- list(s, m, b)  # this puts them all together as a list
-l
-```
-To extract elements from a list, use double brackets.
-```{r List extracting}
-l[[2]] #this will pull out element 2 which is the matrix
-```
-```{r List indexing 2}
-l[[2]][2,6] #this will pull out position [2,6] from element 2 of the list
-```
-To reference/extract multiple elements from a list, you would use single bracket notation, which would itself return a list. This is called “list slicing”.
-```{r List slicing}
-l[1:2]  # This is taking just elements 1 and 2 from the list
-```
-Using str() provides details about the elements in a list:
-```{r List details}
-str(l)
-```
-Elements in lists can be named with names()
-```{r List element names 1}
-names(l) <- c("string", "matrix", "logical")
-names(l)
-```
-Now, you can use the name of an item in the list to refer to it:
-```{r List element names 2}
-l$string  
-l$matrix[3, 5]  
-```
+The point has a value of 300.
+The vector contains the values 364 264 164 and 64. You can see that the same position varied only by the fourth dimension counts by 100.
+The matrix gives contains the values
+     [,1] [,2] [,3] [,4] [,5]
+[1,]  150  145  140  135  130
+[2,]  149  144  139  134  129
+[3,]  148  143  138  133  128
+[4,]  147  142  137  132  127
+[5,]  146  141  136  131  126
 
 ##Challenge 4
 ###Directions
 Make a nested list of a simplified primate taxonomy
 
 ###Step 1: Make a character object of the groups at the lowest level of list organization.
-Within the streppsirhines, this means making objects of the lemuroidea and the lorisoidea. Use concatonate, c(), to combine the elements of the object. Since these are characters, make sure to put them in "quotations." The words lemuroidea and lorisoidea do not need to be in quotations because they are becoming the names of the objects.
+Within the strepsirhines, this means making objects of the lemuroidea and the lorisoidea. Use concatonate, c(), to combine the elements of the object. Since these are characters, make sure to put them in "quotations." The words lemuroidea and lorisoidea do not need to be in quotations because they are becoming the names of the objects.
 ```{r Challenge 4 step 1}
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
     "Daubentoniidae")
