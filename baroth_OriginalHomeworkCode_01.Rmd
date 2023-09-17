@@ -217,7 +217,7 @@ df3[,3] <- as.factor(df3[,3])
 ### Step 5: Check the data type for each variable in the data frame
 Use str() to report details about a structure. In this case, the structure is the data frame. Do this to check that the variables in the data frame are the object type that they are supposed to be.
 ```{r Challenge 5 step 5}
-str(df3) #gives details about dataframe to check data type for each variable
+str(df3) #gives details about data frame to check data type for each variable
 ```
 
 ***
