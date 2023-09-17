@@ -9,75 +9,75 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Module 04
+# Module 04
 
-##Challenge 1
-###Directions
+## Challenge 1
+### Directions
 First, create a vector of 1, word character strings comprising the first line of the novel Ulysses, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
 Then, extract every third element of this vector.
 
-Step 1: Creating a string of the first sentence of *Ulysses* by James Joyce.
+### Step 1: Create a string of the first sentence of *Ulysses* by James Joyce.
 First, save the sentence as a string: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
 ```{r Challenge 1 step 1}
 Ulysses <- c("Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.") #creating the string
 Ulysses #check the string
 ```
 
-Step 2: Remove the punctuation.
+### Step 2: Remove the punctuation.
 Use gsub("[[:punct:]]}",",*name of the string*) to search for punctuation/special charafcters and remove it from the string.
 ```{r Challenge 1 step 2} 
 Ulysses_unpunct <- gsub("[[:punct:]]","",Ulysses) #removing punctuation
 Ulysses_unpunct #check the new unpunctuated version
 ```
 
-###Step 3: Split the string into a vector of separate strings.
+### Step 3: Split the string into a vector of separate strings.
 First load in the package stringr. Install it first if needed. Then use str_split_1() to divide the string. The second argument " " has a space between the quotation marks to indicate that the string should be divided everywhere there is a space. You could tell it to divde using other markers if wanted. The benefit of str_split_1() as opposed to str_split is that it produces a character vector and not a list which makes the next step easier.
 ```{r Challenge 1 step 3}
 library(stringr) #load stringr in the library
 Ulysses_split <- str_split_1(Ulysses_unpunct, " ") #dividing the string into a vector of substrings everywhere there is a space
 Ulysses_split #check the divided vector
 ```
-###Step 4: Extracting every third element of the vector.
-Use seq() to extract specific elements of the vector. Use the by-3 argument to indicate every third element. Use the from=3 argument to start with the third element.
+### Step 4: Extracting every third element of the vector.
+Use seq() to extract specific elements of the vector. Use the by=3 argument to indicate every third element. Use the from=3 argument to start with the third element.
 ```{r Challenge 1 step 4}
 every3 <- Ulysses_split[seq(from = 3, to = 21, by = 3)] #extract every third element
 every3 #check that it worked
 ```
 
-##Challenge 2
-###Directions
+## Challenge 2
+### Directions
 Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x.
 Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x.
 Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
 
-###Step 1: Create the matrix
+### Step 1: Create the matrix
 Specify the data, the rows and columns. You can specify byrow=FALSE, but that is the default, so it's not necessary.
 ```{r Challenge 2 step 1}
 m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE) #create the matrix
 m #check that the matrix is correct
 ```
 
-###Step 2: Extract the 2nd, 3rd, and 6th columns and assign them to the variable x.
+### Step 2: Extract the 2nd, 3rd, and 6th columns and assign them to the variable x.
 To extract a column, use bracket notation, m[,2] and leave the row specification blank. To extract multiple columns, use concatonate c() to combine the columns you want to extract.
 ```{r Challenge 2 step 2}
 x <- m[,c(2,3,6)] #extract and assign the columns to the variable x
 x #check that you extracted the correct columns
 ```
-###Step 3: Extract the 6th to 8th row and assign them to the variable x.
+### Step 3: Extract the 6th to 8th row and assign them to the variable x.
 To extract a row, use bracket notation, m[6,] and leave the column specification blank. To extract multiple rows, use concatonate c() to combine the rows you want to extract.
 ```{r Challenge 2 step 3}
 x <- m[c(6,8), ] #extract and assign the rows to the variable x
 x #check that you extracted the correct rows
 ```
-###Step 4: Extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
+### Step 4: Extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
 To extract a specific elements, use bracket notation, m[2,2]. To assign multiple specific elements to the same variable, use concatonate c() to combine the elements. Notice here that the order is inversed from the last two steps. The elements are extracted separately and then combined.
 ```{r Challenge 2 step 4}
 x <- c(m[2,2], m[6,9]) #extract and assign the elements to the variable x
 x #check that you extracted the correct elements
 ```
 
-##Challenge 3
-###Directions
+## Challenge 3
+### Directions
 Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)
 
 Given this matrix, what would the following return?
@@ -85,14 +85,14 @@ a[1, 1, 1, 2]
 a[2, 3, 2, ]
 a[1:5, 1:5, 3, 3]
 
-###Step 1: Construct the array.
+### Step 1: Construct the array.
 Use array() to construct an array. Use 400:1 to fill in the data, making sure that it descends from 400 to 1. Specify the dimensions, be sure to use c(). When R reports the array, it shows you matrices of dimensions one and two for all the combinations of the third and fourth dimensions.
 ```{r Challenge 3 step 1}
 a <- array(data = 400:1, dim = c(5, 5, 4, 4)) #create the array
 a #check that the array is correct
 ```
 
-###Step 2: What do these commands return from the array?
+### Step 2: What do these commands return from the array?
 From the array, you can call up one specific point of data by specifying all four dimensions. You can call up a vector by specifying three of the four dimensions. You can call up a matrix by specifying two of the four dimensions. You can also limit the vector or the matrix to just one section using the : function to give a range of values.
 ```{r Challenge 3 step 2}
 a[1,1,1,2] #a single point
@@ -109,11 +109,11 @@ The matrix gives contains the values
 [4,]  147  142  137  132  127
 [5,]  146  141  136  131  126
 
-##Challenge 4
-###Directions
+## Challenge 4
+### Directions
 Make a nested list of a simplified primate taxonomy
 
-###Step 1: Make a character object of the groups at the lowest level of list organization.
+### Step 1: Make a character object of the groups at the lowest level of list organization.
 Within the strepsirhines, this means making objects of the lemuroidea and the lorisoidea. Use concatonate, c(), to combine the elements of the object. Since these are characters, make sure to put them in "quotations." The words lemuroidea and lorisoidea do not need to be in quotations because they are becoming the names of the objects.
 ```{r Challenge 4 step 1}
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
@@ -122,6 +122,7 @@ Lorisoidea <- c("Lorisidae", "Galagidae")
 str(Lemuroidea) #This is just to check that the object was made correctly
 str(Lorisoidea) #This is just to check that the object was made correctly
 ```
+
 ### Step 2: Combine those characters into a list named for the next level up in the hierarchy.
 At this stage use list() instead of c() because the objects you are combining are already objects. You also have to name the items in the list so that they aren't just named [[1]] and [[2]]. Make sure to name them in the order you added them to the list and use "quotations".
 ```{r Challenge 4 step 2}
@@ -129,7 +130,8 @@ Strepsirhini <- list(Lemuroidea, Lorisoidea) #Combine the elements into a list
 names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea") #Name the elements in the list in order and using quotations
 Strepsirhini #call up the list to see that it is organized correctly
 ```
-###Step 3: Repeat these steps for the haplorhines.
+
+### Step 3: Repeat these steps for the haplorhines.
 Note that in this simplified taxonomy, the anthropoids have an additional level of organization. Therefore, create the catarrhines by repeating steps 1 and 2; create the tarsids using steps 1 and 2; then combine the catarhines and tarids into the haplorhines by repeating step 2 again. Make sure to keep naming the list elements.
 ``` {r Challenge 4 step 3}
 Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae") #create the catarrhines character object 
@@ -147,7 +149,8 @@ Haplorhini <- list(Anthropoidea, Tarsioidea) #combines the anthropoid and tarsid
 names(Haplorhini) <- list("Anthropoidea", "Tarsioidea") #name the objects in the list
 Haplorhini #check that the list is organized correctly
 ```
-###Step 4: Combine the lists into the final Primates list.
+
+### Step 4: Combine the lists into the final Primates list.
 Repeating step 2 one last time, use list() to combine the Haplorhines and Strepsirhines, making sure to name the objects. Finally check that everything is in the correct order and the names match the groups that they are supposed to be naming.
 ```{r Challenge 4 step 4}
 Primates <- list(Haplorhini, Strepsirhini) #combine the lists into the final list
@@ -155,9 +158,9 @@ names(Primates) <- list("Haplorhini", "Strepsirhini") #name the list objects
 Primates #check the names and organization
 ```
 
-##Challenge 5
-###Directions
-Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix ROW-WISE.
+## Challenge 5
+### Directions
+Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix row-wise.
 
 Then, do the following:
 
@@ -169,33 +172,33 @@ As a data frame, coerce the third column to be factor-valued
 
 When you are done, use the str() command to show the data type for each variable in your dataframe.
 
-###Step 1: Store the matrix
+### Step 1: Store the matrix
 Use the matrix() function to make a matrix. Use concatonate, the c() function, to group the list of numbers as the data set that will fill the matrix. Specify the number of rows and columns. Specify that byrow=TRUE because the default is to fill by column.
 ```{r Challenge 5 step 1}
 m3 <- matrix(data = c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 5, ncol = 3, byrow = TRUE) #saves the matrix by the name m3
 m3 #calls up the new matrix to check that it is correct
 ```
 
-###Step 2: Coerce the matrix to a data frame
+### Step 2: Coerce the matrix to a data frame
 Use as.data.frame() to turn the matrix into a data frame and save it as a new object.
 ```{r Challenge 5 step 2}
 df3 <- as.data.frame(m3) #saves the data frame as an object called df3
 df3 #calls up the newly made data frame to check that it is correct
 ```
 
-###Step 3: Coerce the second column to be logical valued
+### Step 3: Coerce the second column to be logical valued
 Logical valued means the data are logical arguments like TRUE and FALSE. Since column 2 is all 0s and 1s, it can be made to represent TRUE and FALSE using as.logical(). Use bracket notation [,2] to index column 2 specifically. Make sure to save the change into column 2 of the data frame, df3[,2].
 ```{r Challenge 5 step 3}
 df3[,2] <- as.logical(df3[,2])
 ```
 
-###Step 4: Coerce the third column to be factor valued
+### Step 4: Coerce the third column to be factor valued
 Factor valued means that each different entry in the data frame is given a level. Since column 3 contains numbers, those numeric values become factors when you use as.factor(). There are only two different values (1 and 2) so there ends up being two levels (named 1 and 2). Use bracket notation [,3] to index column 3 specifically. Make sure to save the change into column 3 of the data frame, df3[,3].
 ```{r Challenge 5 step 4}
 df3[,3] <- as.factor(df3[,3])
 ```
 
-###Step 5: Check the data type for each variable in the data frame
+### Step 5: Check the data type for each variable in the data frame
 Use str() to report details about a structure. In this case, the structure is the data frame. Do this to check that the variables in the data frame are the object type that they are supposed to be.
 ```{r Challenge 5 step 5}
 str(df3) #gives details about dataframe to check data type for each variable
