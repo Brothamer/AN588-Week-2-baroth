@@ -2,7 +2,10 @@
 title: "baroth_OriginalHomeworkCode_01"
 author: "**Brooke Rothamer**"
 date: "*2023-09-17*"
-output: html_document
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
