@@ -83,27 +83,39 @@ every3
 ```
 
 ##Challenge 2
-```{r Challenge 2 matrix}
-mat <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE) #creating the matrix
-mat
+###Directions
+Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x.
+Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x.
+Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
+
+###Step 1: Create the matrix
+Specify the data, the rows and columns. You can specify byrow=FALSE, but that is the default, so it's not necessary.
+```{r Challenge 2 step 1}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE) #create the matrix
+m #check that the matrix is correct
 ```
-Given the matrix, mat, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x
-```{r Challenge 2 extract 1}
-x <- mat[c(2,3,6), ]
-x
+
+###Step 2: Extract the 2nd, 3rd, and 6th columns and assign them to the variable x.
+To extract a column, use bracket notation, m[,2] and leave the row specification blank. To extract multiple columns, use concatonate c() to combine the columns you want to extract.
+```{r Challenge 2 step 2}
+x <- m[,c(2,3,6)] #extract and assign the columns to the variable x
+x #check that you extracted the correct columns
 ```
-Given the matrix, mat, above, extract the 6th to 8th row and assign them to the variable y
-```{r Challenge 2 extract 2}
-y <- mat[c(6,8), ]
-y
+###Step 3: Extract the 6th to 8th row and assign them to the variable x.
+To extract a row, use bracket notation, m[6,] and leave the column specification blank. To extract multiple rows, use concatonate c() to combine the rows you want to extract.
+```{r Challenge 2 step 3}
+x <- m[c(6,8), ] #extract and assign the rows to the variable x
+x #check that you extracted the correct rows
 ```
-Given the matrix, mat, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable z
-```{r Challenge 2 extract 3}
-z <- c(mat[2,2], mat[6,9])
-z
+###Step 4: Extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
+To extract a specific elements, use bracket notation, m[2,2]. To assign multiple specific elements to the same variable, use concatonate c() to combine the elements. Notice here that the order is inversed from the last two steps. The elements are extracted separately and then combined.
+```{r Challenge 2 step 4}
+x <- c(m[2,2], m[6,9]) #extract and assign the elements to the variable x
+x #check that you extracted the correct elements
 ```
 
 ##Challenge 3
+###Directions
 Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)
 
 Given this matrix, what would the following return?
@@ -120,7 +132,7 @@ a #check that the array is correct
 
 ###Step 2: What do these commands return from the array?
 From the array, you can call up one specific point of data by specifying all four dimensions. You can call up a vector by specifying three of the four dimensions. You can call up a matrix by specifying two of the four dimensions. You can also limit the vector or the matrix to just one section using the : function to give a range of values.
-```{r Challenge 3 return values}
+```{r Challenge 3 step 2}
 a[1,1,1,2] #a single point
 a[2,3,2,] #a vector of values that vary in the fourth dimension
 a[1:5,1:5,3,3] #a matrix but limited only to values 1:5 in the first and second dimensions
